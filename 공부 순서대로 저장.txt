@@ -1,3 +1,43 @@
+보기 힘들면 해당 부분 긁어서 다른 js 파일에서 확인 해보면 될거야! 
+
+DOM API
+쉽게 자바스크립트에서 html을 조작하는 명령들 이라고 생각하면 된다.
+1.
+let boxEl = document.querySelector('.box');    // 해당 클래스 가져와 변수에 담음  
+console.log(boxEl); 
+boxEl.addEventListener('click', function(){ // 클릭 이벤트 
+  console.log('왜눌러!!!!!!!!!!!!!');
+  boxEl.classList.add('active');            // 클래스 추가 
+  console.log(boxEl.classList.contains('active'));  
+  boxEl.classList.remove('active');         // 클래스 제거 
+  console.log(boxEl.classList.contains('active'));
+});
+
+2.
+const boxels = document.querySelectorAll('.box'); //해당 클래스 모두 가져오기 
+boxels.forEach((boxel,index)=>{                   //forEach문 으로 반복 
+  boxel.classList.add(`order-${index+1}`);  
+  console.log(index, boxel);
+});
+
+3.
+const boxel1 = document.querySelector('.box');
+console.log(boxel1.textContent);
+boxel1.textContent = 'aaa';                   //텍스트 설정하거나 가져오기 
+console.log(boxel1.textContent);
+
+
+
+// 4. 메소드 체이닝 
+const a = 'Hello~';
+
+const b = a.split('').reverse().join('');
+console.log(b);
+
+
+
+==========================================================
+
 //  비교 연산자 
 const ab = 1
 const ba = `1`
@@ -24,9 +64,7 @@ console.log(c)
 
 console.log(a && b && c)
 
-
-
-=========================
+====================================================
 
 const a = 1> 2 ;
 if(a){
@@ -38,7 +76,7 @@ if(a){
 //삼항 연산자 
 console.log(a ? "참" : '거짓' )
 
-=========================
+====================================================
 const a = getRandom()
 
 if(a === 0 ){
@@ -47,7 +85,7 @@ if(a === 0 ){
   console.log("다른거야 ㅜ ㅜ ")
 }
 
-=========================
+====================================================
 반복문 ( 반복해서 html 조절하는거 해봄 )
 
 const ulEl = document.querySelector('ul')
@@ -63,7 +101,7 @@ for (let i =0 ; i<10 ; i++){
   ulEl.appendChild(li) 
 }
 
-=========================
+====================================================
 
 function asb() {
 //변수 유효 범위 const let 블럭 레벨 ({ ] 속에서만 반응 }) var 함수레벨 (함수 속에서만 유효)
@@ -75,10 +113,141 @@ if (true){
 }
 asb()
 
-=========================
+====================================================
 형변환 
 // 참 값 
 true , {} , [] , 1 ,2 ,'문자있어' , -12 , -3.14 ..
 // 거짓 값 
 false , '' , null , nudefined , 0 , -0 , NaN
 
+====================================================
+
+//익명함수 (함수 이름없음 변수에 담기만 한거임)
+const sum = function (x , y) {
+  return x+y
+}
+
+//기명함수 ( 함수 이름이 있음 )
+function sum(x , y) {
+  return x+y
+}
+
+
+//함수 연습
+function sum(x , y) {
+ if(x < 2){
+   return `adsad${x + y}asdasd`
+ }
+  return x+y
+}
+
+console.log(sum(1,3))
+
+
+//따로 매개변수를 지정안해도 사용가능한 arquments 객체 
+//함수 안에서 언제든지 사용할수 있게 설계가 되어있는 aqguments
+function sum() {
+  console.log(arguments)
+  return arguments[0] + arguments[1]
+}
+
+console.log(sum(1,3))
+
+
+====================================================
+화살표 함수 
+
+const double = function (x) {
+  return x * 2
+}
+
+console.log(double(7))
+
+//화살표 함수 축약 
+//매개변수 한개라면 () 생략가능  , 실행문 한줄이라면 return 생략가능
+const doubleArrow = x => x * 2 
+//매개변수 2개라면 () 생략 불가능  
+const doubleArrow2 = (x , y) => x * 2 
+
+
+//객체 데이터 화살표 함수로 축약 전 
+const doubleArrow3 = () => {
+  
+  return {name: "아옳이"}
+}
+
+
+
+//객체 데이터 화살표함수로 축약 
+const doubleArrow4 = () => ({name: "아옳이",})
+
+console.log(doubleArrow3(7))
+
+====================================================
+
+//즉시실행함수  
+//IIFE
+
+const a = 7 
+function double() {
+  console.log(a * 4)
+}
+double(); 
+
+//이름 없는 직시 실행 함수    (함수 작성 )()
+(function(x) {
+  console.log(a *x)
+})();
+
+//이름 없는 직시 실행 함수   이방법을 더 추천(함수작성())
+(function(x) {
+  console.log(a * x)
+}(4))
+
+
+// 호이스팅 
+//쉽게 이야해하면 기명함수(이름있는)가 나중에 만들어 졌어도 호출하면 호출됨 아래 예시 
+const a = 7 
+double()
+
+function double() {
+  console.log(a * 2)
+}
+
+==================================================
+
+//타이머 함수 
+// setTimeout(함수 , 시간 ) : 일정시간 후 함수 실행 
+// setInterval(함수, 시간 ) : 시간 간격마다 함수 실행 
+// clearTimeout(): 설정된 TimeOut 함수를 종료 
+// clearInterval(): 설정된 Interval 함수를 종료 
+
+
+const timer = setInterval(()=>{
+  console.log("1초뒤 나타남")
+} , 1000) 
+setInterval(function() {} , 3000)
+
+const h1El = document.querySelector('h1')
+h1El.addEventListener('click', ()=> {
+  clearInterval(timer)
+  console.log("눌럿음")
+  timer
+})
+
+==========================================================
+
+//콜백함수 
+// 함수의 인수로 사용되는 함수 
+
+
+function timer(cb){
+ setTimeout(()=>{
+  console.log("1초뒤 나타남")
+  cb()
+}, 3000) 
+}
+
+timer(() => {
+  console.log("다끝낫엉")
+})
