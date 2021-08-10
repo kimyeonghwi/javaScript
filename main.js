@@ -8,3 +8,5 @@ console.log(typeof "asdasdasd")
 console.log(getType({}))
 console.log(getType(null))
 console.log(getType([]))
+
+sadfasf
