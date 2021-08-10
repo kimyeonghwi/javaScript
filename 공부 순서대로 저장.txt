@@ -1,0 +1,84 @@
+//  비교 연산자 
+const ab = 1
+const ba = `1`
+
+//데이터 타입은 노상관 
+console.log(ab == ba)
+
+
+function isEqual(x , y){
+  //데이터의 타입까지 확인한다.
+  return x === y
+}
+
+console.log(isEqual(1,2))
+
+
+const a = 1 === 1 
+const b = 'AB' === 'AB'
+const c = true
+console.log(`----------------`)
+console.log(a)
+console.log(b)
+console.log(c)
+
+console.log(a && b && c)
+
+
+
+=========================
+
+const a = 1> 2 ;
+if(a){
+  console.log("참")
+}else{
+  console.log("그짓")
+}
+
+//삼항 연산자 
+console.log(a ? "참" : '거짓' )
+
+=========================
+const a = getRandom()
+
+if(a === 0 ){
+  console.log("a는 0이당")
+}else {
+  console.log("다른거야 ㅜ ㅜ ")
+}
+
+=========================
+반복문 ( 반복해서 html 조절하는거 해봄 )
+
+const ulEl = document.querySelector('ul')
+
+for (let i =0 ; i<10 ; i++){
+  const li = document.createElement('li')
+  li.textContent = `list-${i+1}`
+ if ( (i+1)  % 2 === 0 ){
+  li.addEventListener('click', function(){
+    console.log(li.textContent)
+  })
+ }
+  ulEl.appendChild(li) 
+}
+
+=========================
+
+function asb() {
+//변수 유효 범위 const let 블럭 레벨 ({ ] 속에서만 반응 }) var 함수레벨 (함수 속에서만 유효)
+// 헷갈리면 a 변수를 var let const 각각 선언해보셈 
+if (true){
+  const a = 1 
+}
+ console.log(a)
+}
+asb()
+
+=========================
+형변환 
+// 참 값 
+true , {} , [] , 1 ,2 ,'문자있어' , -12 , -3.14 ..
+// 거짓 값 
+false , '' , null , nudefined , 0 , -0 , NaN
+

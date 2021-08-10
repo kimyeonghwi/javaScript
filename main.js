@@ -1,12 +1,16 @@
 import getType from './getType.js'
+import getRandom from './getRandom.js'
 
 
 
-console.log(typeof "asdasdasd")
+function asb() {
+  
 
+if (true){
+  const a = 1 
+  
+}
+ console.log(a)
+}
 
-console.log(getType({}))
-console.log(getType(null))
-console.log(getType([]))
-
-sadfasf
+asb()
