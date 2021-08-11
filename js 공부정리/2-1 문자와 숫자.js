@@ -1,4 +1,4 @@
-=================문자 ====================
+//=================문자 ====================
 //길이 
 const str = '0123'
 console.log("str".length) //4 
@@ -65,11 +65,10 @@ ex) export default function random(){
     return Math.floor(Math.random()*10)
 } 소수점 아래 내림 처리하고 랜덤값 얻어온뒤에 10곱해준다 (0~ 9까지랜덤 숫자)
 
-=============================배열====================
 
-const numbers = [1,2,3,4]
-const fruits = ['A', 'B' ,'C']
-console.log(numbers.length) // 4
-console.log(fruits.length) //3 
-console.log([1 ,2].length) //2 
+
+
+
+
+
 
