@@ -248,8 +248,9 @@ function timer(cb){
 }, 3000) 
 }
 
+//timer를 호출하면서 아래 함수를 던졌다 그것을 cd 로 받았고 타이머 함수가 실행 된후에 실행 되도록 해놓았다.
 timer(() => {
-  console.log("다끝낫엉")
+  console.log("다끝낫엉") 
 })
 
 
@@ -261,7 +262,9 @@ function User(first , last ){
   this.firstname = first
   this.lastname = last
 }
-
+//user라는 생성자 함수에 prototype 이라는 함수로 getFullName이라는 함수를 추가해줘서 
+//나중에 user라는 객체를 생성했을때 사용할수 있게 된다. 이렇ㄱ ㅔ하게되면 
+//메모리를 한번만 사용하여 메모리효율 올라감 
 User.prototype.getFullName = function () {
   return `${this.firstname} ${this.lastname}`
 }
@@ -275,3 +278,152 @@ const sd = new User ('sd' , 'sd')
 console.log(heropy.getFullName())
 console.log(am.getFullName())
 console.log(sd.getFullName())
+
+
+============================================
+this (아직 잘 이해가... ? )
+
+// this 
+// 일반 함수는 %호출 위치에% 따라 this 정의 
+// 화살표 함수는 자신이 선언도니 %함수 범위%에서 this 정의 
+
+1번예제
+const heropy = {
+  name: 'kim',
+  normal: function () {
+    console.log(this.name)
+  },
+  arrow: () => {
+    console.log(this.name)
+  }
+}
+
+//  heropy 내부에 normal 메소드를 실행  지금 호출된 위치는 heropy 이기때문에 this는 heropy 
+ heropy.normal() // kim
+ heropy.arrow() // undefined
+
+2번째 예제
+const amy = {
+  name : 'Amy',
+//  heropy.normal을 amy에 normal메소드에 할당중이다 . 
+  normal: heropy.normal,
+  arrow: heropy.arrow,
+}
+
+ amy.normal() // Amy
+ amy.arrow() // undefined
+
+3번째 예제
+function User(name){
+  this.name = name 
+} 
+
+User.prototype.normal = function() {
+  console.log(this.name)
+}
+
+User.prototype.arrow =() => {
+  console.log(this.name)
+}
+
+
+const heropy = new User('kim')
+heropy.normal() // kim 
+heropy.arrow() // undefinde
+
+4번째 예제 
+const timer = {
+  name: 'Heropy',
+  timeout: function() {
+    setTimeout(() => {
+      console.log(this.name)
+    } ,2000)
+  }
+}
+
+timer.timeout()
+
+============================================
+ES6 Classes
+
+//ES6 Classes 
+
+const heropy = {
+  name: 'kim',
+  //이름이 나오고 :와function 없이 나오면 축약 시킨 부분이다. 
+  normal () {
+    console.log(this.name)
+  },
+  arrow: () => {
+    console.log(this.name)
+  }
+}
+ heropy.normal() 
+ heropy.arrow() 
+
+
+
+//아래 생성자 함수를 클래스 키워드로 만들어서 관리 하자  
+function User(first , last ){
+  this.firstname = first
+  this.lastname = last
+}
+
+User.prototype.getFullName = function () {
+  return `${this.firstname} ${this.lastname}`
+}
+ 
+class User {  
+  constructor(first , last) {
+    this.firstname = first
+    this.lastname = last
+  }
+  getFullName() {
+    return `${this.firstname} ${this.lastname}`
+  }
+  
+} 
+
+
+
+const heropy = new User ('heropy' , 'park')
+const am = new User ('am' , 'am')
+const sd = new User ('sd' , 'sd')
+
+console.log(heropy)
+console.log(am.getFullName())
+console.log(sd.getFullName())
+
+=====================================================
+
+//상속 ...
+
+class Vehicle{
+  constructor(name, wheel) {
+    this.name = name
+    this.wheel = wheel
+  }
+}
+
+const myVehicle = new Vehicle('운송수단', 2)
+console.log(myVehicle)
+
+class Bicycle extends Vehicle{
+  constructor(name, wheel) {
+    super(name,wheel)
+  }
+}
+
+const myBicycle = new Bicycle('자전거' , 2)
+console.log(myBicycle)
+
+
+class Car extends Vehicle{
+  constructor(name, wheel, license) {
+    super(name,wheel)
+    this.license = license
+  }
+}
+
+const myCar = new Car('자전거' , 4 , true)
+console.log(myCar)
