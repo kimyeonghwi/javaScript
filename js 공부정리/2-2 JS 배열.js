@@ -1,4 +1,4 @@
-//=============================배열====================
+//=============================배열==================== Array MDN
 
 const numbers = [1,2,3,4]
 const fruits = ['A', 'B' ,'C']
@@ -59,6 +59,7 @@ const a = numbers.map(numbers => {
 })
 console.log(a) //  [true, true, false, false]
 
+
 //filter 필터링 하기 (원본영향 없음 )
 const b = numbers.filter(numbers => {
   return numbers < 3 
@@ -86,14 +87,15 @@ console.log(b) // 2
 
 //includes 포함 되어있는지 확인 하는 
 const a = numbers.includes(3)
-console.log(a)
+console.log(a) //true
 
 const b = fruits.includes('aaa')
-console.log(b)
+console.log(b) //false
 
 //push 아이템 집어 넣기 (가장뒤에 넣음 )
 numbers.push(5)
 console.log(numbers)// [1, 2, 3, 4, 5]
+
 //unshift 아이템 집어 넣기 (가장앞에 넣음)
 numbers.unshift(0)
 console.log(numbers)// [0, 1, 2, 3, 4, 5]
@@ -108,8 +110,8 @@ console.log(numbers) // [1, 4]
  
 //splice 끼워 넣어라 
 numbers.splice(2,0, 999)
-console.log(numbers)  [1, 2, 999, 3, 4]
+console.log(numbers) // [1, 2, 999, 3, 4]
 
 //복합 해서 제거와 동시에 끼워 넣기 
 numbers.splice(2,1,99)
-console.log(numbers) [1, 2, 99, 4]
+console.log(numbers) // [1, 2, 99, 4]
