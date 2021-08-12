@@ -61,7 +61,7 @@ console.log("ceil : ", Math.ceil(3.14)) // 4
 console.log("floor : ", Math.floor(3.14)) // 3
 //반올림 처리 (소숫점이0.5 이상이면 값은 4된다.) round
 console.log("round : ", Math.round(3.14)) // 3
-//랜덤값 준다.  random
+//랜덤값 준다. random
 console.log("random : ", Math.random()) // 0.234154
 //ex) export default function random(){
 //    return Math.floor(Math.random()*10)

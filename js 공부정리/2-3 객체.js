@@ -46,7 +46,6 @@ console.log(keys) // ["name", "age", "email"]
 
 console.log(user['email']) // pwrkim12@naver.com
 
-
 //keys는 user의 키값만 가지고 있다. 그 키값으로 map 메소드 사용하여 
 //값들만 가지고 있는 배열 데이터가 생성되었다 .
 const values = keys.map(key => user[key])

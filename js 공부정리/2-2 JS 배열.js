@@ -23,13 +23,12 @@ fruits.forEach(function (element , index , array){
 // B 1 (3) ["A", "B", "C"]
 // C 2 (3) ["A", "B", "C"]
 
-
-
+//배열내의 모든 요소각각에 대하여 주어진 함수를 호출한 결과를 모아 새로운 배열을 반환 
 //map 배열을 리턴해줌 forEach처럼 반복하며 리턴 해준다. 
 const b = fruits.map(function (element , index ){
-  return `${element}-${index}`
+  return `${element}-${index}` 
 });
-console.log(b) // (3) ["A-0", "B-1", "C-2"]
+console.log(b) // (3) ["A-0", "B-1", "C-2"] 
 
 //객체데이터를 담은 b 
 const b = fruits.map(function (element , index ){
